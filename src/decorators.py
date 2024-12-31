@@ -31,4 +31,3 @@ def log(filename=None):
                 raise  # Пробрасываем исключение дальше
         return wrapper
     return decorator
-
