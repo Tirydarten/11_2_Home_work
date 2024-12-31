@@ -1,5 +1,5 @@
-from typing import Callable, TypeVar, Optional, Any
 from functools import wraps
+from typing import Any, Callable, Optional, TypeVar
 
 
 def log(filename: Optional[str] = None) -> Any:
