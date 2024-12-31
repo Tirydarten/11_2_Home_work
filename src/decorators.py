@@ -13,8 +13,8 @@ def log(filename: Optional[str] = None) -> Any:
 
                 # Логирование результата
                 if filename:
-                    with open(filename, 'a') as f:
-                        f.write(log_message + '\n')
+                    with open(filename, "a") as f:
+                        f.write(log_message + "\n")
                 else:
                     print(log_message)
 
@@ -24,12 +24,13 @@ def log(filename: Optional[str] = None) -> Any:
 
                 # Логирование ошибки
                 if filename:
-                    with open(filename, 'a') as f:
-                        f.write(error_message + '\n')
+                    with open(filename, "a") as f:
+                        f.write(error_message + "\n")
                 else:
                     print(error_message)
 
                 raise  # Пробрасываем исключение дальше
 
         return wrapper
+
     return decorator

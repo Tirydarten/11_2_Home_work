@@ -6,7 +6,6 @@ from main import my_function
 from src.decorators import log
 
 
-
 # Тестирование успешного выполнения функции
 def test_my_function_success(capsys: pytest.CaptureFixture) -> None:
     result = my_function(1, 2)
@@ -20,7 +19,7 @@ def test_my_function_success(capsys: pytest.CaptureFixture) -> None:
 # Тестирование обработки ошибки
 def test_my_function_error(capsys: pytest.CaptureFixture) -> None:
     with pytest.raises(TypeError):  # Ожидаем, что возникнет TypeError
-        my_function(1, 'a')
+        my_function(1, "a")
 
     # Проверка вывода ошибки в консоль
     captured = capsys.readouterr()
@@ -55,7 +54,7 @@ def test_log_error_to_file(tmpdir: local) -> None:
         return x + y
 
     with pytest.raises(TypeError):
-        error_function(1, 'b')
+        error_function(1, "b")
 
     # Проверяем содержимое файла лога на наличие ошибки
     with open(log_file) as f:

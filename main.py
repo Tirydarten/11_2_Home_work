@@ -8,6 +8,7 @@ from src.decorators import log
 #     """Функция сложения двух чисел"""
 #     return x + y
 
+
 # Ожидаемый вывод в консоль "filename=None" или "()"
 # при успешном выполнении: (закомментируйте/раскомментируйте следующую строку для тестирования)
 @log(filename=None)
@@ -23,7 +24,7 @@ def my_function(x: int, y: int) -> int:
 
 # Вызов с ошибкой (закомментируйте/раскомментируйте следующую строку для тестирования)
 try:
-    result = my_function(1, 'a')  # Это вызовет ошибку TypeError
+    result = my_function(1, "a")  # Это вызовет ошибку TypeError
 
 except TypeError as e:
 
