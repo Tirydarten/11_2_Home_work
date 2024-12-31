@@ -12,7 +12,7 @@ from src.decorators import log
 # при успешном выполнении: (закомментируйте/раскомментируйте следующую строку для тестирования)
 @log(filename=None)
 # @log()
-def my_function(x, y):
+def my_function(x: int, y: int) -> int:
     """Функция сложения двух чисел"""
     return x + y
 

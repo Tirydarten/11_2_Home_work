@@ -1,10 +1,11 @@
+from typing import Callable, TypeVar, Optional, Any
 from functools import wraps
 
 
-def log(filename=None):
-    def decorator(func):
+def log(filename: Optional[str] = None) -> Any:
+    def decorator(func: Any) -> Any:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 # Вызов оригинальной функции
                 result = func(*args, **kwargs)
@@ -29,5 +30,6 @@ def log(filename=None):
                     print(error_message)
 
                 raise  # Пробрасываем исключение дальше
+
         return wrapper
     return decorator

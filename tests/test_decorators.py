@@ -1,11 +1,14 @@
+from threading import local
+
 import pytest
 
 from main import my_function
 from src.decorators import log
 
 
+
 # Тестирование успешного выполнения функции
-def test_my_function_success(capsys):
+def test_my_function_success(capsys: pytest.CaptureFixture) -> None:
     result = my_function(1, 2)
     assert result == 3  # Проверка результата сложения
 
@@ -15,7 +18,7 @@ def test_my_function_success(capsys):
 
 
 # Тестирование обработки ошибки
-def test_my_function_error(capsys):
+def test_my_function_error(capsys: pytest.CaptureFixture) -> None:
     with pytest.raises(TypeError):  # Ожидаем, что возникнет TypeError
         my_function(1, 'a')
 
@@ -26,11 +29,11 @@ def test_my_function_error(capsys):
 
 
 # Тестирование логирования в файл
-def test_log_to_file(tmpdir):
+def test_log_to_file(tmpdir: local) -> None:
     log_file = tmpdir.join("log.txt")
 
     @log(filename=str(log_file))
-    def test_function(x, y):
+    def test_function(x: int, y: int) -> int:
         return x + y
 
     result = test_function(3, 4)
@@ -44,11 +47,11 @@ def test_log_to_file(tmpdir):
 
 
 # Тестирование логирования ошибки в файл
-def test_log_error_to_file(tmpdir):
+def test_log_error_to_file(tmpdir: local) -> None:
     log_file = tmpdir.join("log_error.txt")
 
     @log(filename=str(log_file))
-    def error_function(x, y):
+    def error_function(x: int, y: int) -> int:
         return x + y
 
     with pytest.raises(TypeError):
